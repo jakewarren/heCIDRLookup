@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import re
+from netaddr import *
 
 def usage():
     print "Usage: %s <search string>" % sys.argv[0]
@@ -57,7 +58,16 @@ def main():
 
     for key in cidrDict:
         print key+":"
-        print "\n".join(cidrDict[key])
+
+        #merge the CIDRs to remove any duplicates
+        s1 = IPSet()
+        for cidr in cidrDict[key]:
+            s1.add(cidr)
+
+        #print the resulting cidrs
+        for cidr in s1.iter_cidrs():
+            print cidr
+
         print ""
         
 
