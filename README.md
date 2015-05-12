@@ -9,8 +9,12 @@ netaddr
 BeautifulSoup
 requests
 ```
-
 ######Usage:
+```
+./hurricaneElectricLookup.py <search string>
+```
+
+######Example:
 ```
 ./hurricaneElectricLookup.py Facebook
 Facebook:
